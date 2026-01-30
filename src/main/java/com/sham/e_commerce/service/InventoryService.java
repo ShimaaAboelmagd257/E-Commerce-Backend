@@ -11,13 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class InventoryService {
+
     private final ProductRepository productRepository;
     private static final Logger log = LoggerFactory.getLogger(InventoryService.class);
 
     @Transactional
     Boolean checkAndUpdateStock(Integer productId ,int quantity){
         int updated = productRepository.decreaseStockIfAvailable(productId,quantity) ;
-        return updated ==1 ;
+        return updated == 1 ;
     }
 
 
